@@ -9,7 +9,7 @@ public class ItemObject {
     private String btntrailer;
     private String btnbaru;
     private String tanggal;
-
+    private String id;
 
     public String getNama() {
         return Nama;
@@ -57,5 +57,13 @@ public class ItemObject {
 
     public void setTanggal(String tanggal) {
         this.tanggal= tanggal;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

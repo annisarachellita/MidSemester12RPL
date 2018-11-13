@@ -8,39 +8,28 @@ import android.os.Parcelable;
  */
 
 public class MahasiswaModel implements Parcelable {
-    private int id;
+    private String id;
     private String name;
     private String nim;
     private String url;
     private String tanggal;
 
 
-    public MahasiswaModel(){
-
-    }
-
-    public MahasiswaModel(String name, String nim,String url,String tanggal){
-        this.name = name;
-        this.nim= nim;
-        this.url = url;
-        this.tanggal = tanggal;
-
-    }
-
-    public MahasiswaModel(String name, String nim, String url){
-        this.id = id;
+    public MahasiswaModel(String name, String nim, String url) {
         this.name = name;
         this.nim = nim;
         this.url = url;
-        this.tanggal = tanggal;
 
     }
 
+    public MahasiswaModel() {
 
+    }
 
     public String getUrl() {
         return url;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
@@ -58,7 +47,7 @@ public class MahasiswaModel implements Parcelable {
     }
 
     public void setName(String Name) {
-        this.name = name;
+        this.name = Name;
     }
 
 
@@ -66,11 +55,11 @@ public class MahasiswaModel implements Parcelable {
         this.tanggal = tanggal;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -81,7 +70,7 @@ public class MahasiswaModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
+        dest.writeString(this.id);
         dest.writeString(this.name);
         dest.writeString(this.nim);
         dest.writeString(this.url);
@@ -89,7 +78,7 @@ public class MahasiswaModel implements Parcelable {
     }
 
     protected MahasiswaModel(Parcel in) {
-        this.id = in.readInt();
+        this.id = in.readString();
         this.name = in.readString();
         this.nim = in.readString();
         this.url = in.readString();

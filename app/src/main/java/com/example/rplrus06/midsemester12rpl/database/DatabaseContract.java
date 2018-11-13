@@ -19,5 +19,6 @@ public class DatabaseContract {
         static String URL = "url";
         static String TANGGAL = "tanggal";
 
+
     }
 }

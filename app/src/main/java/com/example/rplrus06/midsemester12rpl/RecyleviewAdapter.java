@@ -22,10 +22,11 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
     private List<ItemObject> moviesList;
     Context context;
     String url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description;
         public ImageView image;
-        Button btnlihat, btnbaru;
+        Button btnlihat, btnbaru, btnhapus;
 
         public MyViewHolder(View view) {
             super(view);
@@ -33,6 +34,7 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
             image = (ImageView) view.findViewById(R.id.imgholders);
             btnlihat = (Button) view.findViewById(R.id.btnlihat);
             btnbaru = (Button) view.findViewById(R.id.btnbaru);
+            btnhapus = (Button) view.findViewById(R.id.btnhapus);
 
             btnbaru.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -41,9 +43,6 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
                     shareintent.setAction(Intent.ACTION_SEND);
                     shareintent.putExtra(Intent.EXTRA_TEXT, "Your Text Here");
                     shareintent.setType("text/plain");
-
-
-
 
 
                 }
@@ -73,19 +72,20 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
         holder.title.setText(movie.getNama());
 
 
-        Glide.with(context).load(url+movie.getGambar()).into(holder.image);
+        Glide.with(context).load(url + movie.getGambar()).into(holder.image);
         holder.btnlihat.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 final String Nama = movie.getNama();
-                final  String Gambar = url+movie.getGambar();
-                final  String Deskripsi = movie.getDeskripsi();
-
-                Intent intent = new Intent(context.getApplicationContext(),detailnama.class);
-                intent.putExtra("Nama",Nama);
-                intent.putExtra("Gambar",Gambar);
-                intent.putExtra("Deskripsi",Deskripsi);
+                final String Gambar = url + movie.getGambar();
+                final String Deskripsi = movie.getDeskripsi();
+                final String id = movie.getId();
+                Intent intent = new Intent(context.getApplicationContext(), detailnama.class);
+                intent.putExtra("id",id);
+                intent.putExtra("Nama", Nama);
+                intent.putExtra("Gambar", Gambar);
+                intent.putExtra("Deskripsi", Deskripsi);
                 context.startActivity(intent);
             }
         });
@@ -96,14 +96,11 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
                 shareintent.setType("text/plain");
                 String shareBody = "Your Body Here";
                 String shareSub = "Your Subject Here";
-                shareintent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
-                shareintent.putExtra(Intent.EXTRA_TEXT,shareBody);
-
-                context.startActivity(Intent.createChooser(shareintent,"Share Using"));
+                shareintent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                shareintent.putExtra(Intent.EXTRA_TEXT, shareBody);
 
 
-
-
+                context.startActivity(Intent.createChooser(shareintent, "Share Using"));
 
 
             }
@@ -115,4 +112,5 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
     public int getItemCount() {
         return moviesList.size();
     }
+
 }

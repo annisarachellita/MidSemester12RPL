@@ -56,16 +56,8 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             case R.id.favorite:
-                moveTaskToBack(true);
-                SharedPreferences sharedPreferences1 = getSharedPreferences("isi", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-                editor1.clear();
-                editor1.apply();
                 Intent intent1 = new Intent(Home.this, favorite.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
-                finish();
-
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -129,6 +121,7 @@ public class Home extends AppCompatActivity {
                     JSONArray aktualData = jsonObject.getJSONArray("results");
                     for (int x = 0; x < aktualData.length(); x++) {
                         ItemObject itemObject = new ItemObject();
+                        itemObject.setId(aktualData.getJSONObject(x).getString("id"));
                         itemObject.setNama(aktualData.getJSONObject(x).getString("title"));
                         itemObject.setGambar(aktualData.getJSONObject(x).getString("poster_path"));
                         itemObject.setDeskripsi(aktualData.getJSONObject(x).getString("overview"));

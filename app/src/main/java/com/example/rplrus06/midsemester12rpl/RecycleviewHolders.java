@@ -12,7 +12,7 @@ public class RecycleviewHolders extends RecyclerView.ViewHolder {
     public TextView person_name;
     public TextView person_deskripsi;
     public ImageView img_buku;
-    public TextView btnlihat;
+    public TextView btnlihat, btnhapus;
 
 
     public RecycleviewHolders(View ItemView) {
@@ -24,6 +24,7 @@ public class RecycleviewHolders extends RecyclerView.ViewHolder {
 
         img_buku = (ImageView) ItemView.findViewById(R.id.imgholders);
         btnlihat = (Button) ItemView.findViewById(R.id.btnlihat);
+        btnhapus = (Button) ItemView.findViewById(R.id.btnhapus);
 
     }
 }

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (ednama.getText().toString().equals("Annisa") && edpass.getText().toString().equals("12345")) {
                     Toast.makeText(getApplicationContext(), "berhasil", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, Home.class);
+                    Intent intent = new Intent(MainActivity.this,HomeScreen.class);
 
                     String user = ednama.getText().toString();
                     sharedPreferences = getSharedPreferences("masuk", Context.MODE_PRIVATE);

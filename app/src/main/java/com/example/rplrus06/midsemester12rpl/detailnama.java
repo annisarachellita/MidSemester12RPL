@@ -1,11 +1,15 @@
 package com.example.rplrus06.midsemester12rpl;
 
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +19,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.rplrus06.midsemester12rpl.database.MahasiswaHelper;
 import com.example.rplrus06.midsemester12rpl.database.MahasiswaModel;
+import org.json.JSONObject;
+
+import static android.os.Build.VERSION_CODES.M;
+
+
 
 public class detailnama extends AppCompatActivity {
     ImageView imgview;
@@ -22,7 +31,6 @@ public class detailnama extends AppCompatActivity {
     String Nama;
     FloatingActionButton fab;
     boolean flag = true;
-
     String Deskripsi;
     String img_buku;
     Button btntrailer;
@@ -34,6 +42,7 @@ public class detailnama extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailnama);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
         imgview = findViewById(R.id.imgview);
         person_name = findViewById(R.id.person_name);
         person_deskripsi = findViewById(R.id.person_deskripsi);
@@ -69,7 +78,7 @@ public class detailnama extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "Sukses Favorite", Toast.LENGTH_SHORT).show();
 
                     if (flag) {
-                        MahasiswaModel mahasiswaModel = new MahasiswaModel(Nama,img_buku, Deskripsi);
+                        MahasiswaModel mahasiswaModel = new MahasiswaModel(Nama, img_buku, Deskripsi);
                         mahasiswaHelper.insertTransaction(mahasiswaModel);
                         Toast.makeText(getApplicationContext(), "Sukses Favorite", Toast.LENGTH_SHORT).show();
                         fab.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorite_black_24dp));
@@ -83,10 +92,21 @@ public class detailnama extends AppCompatActivity {
                 }
 
             });
-
+        }
+//        public boolean onSupportNavigateUp () {
+//            Intent intent = new Intent(this, HomeScreen.class);
+//            startActivity(intent);
+//            finish();
+//            return true;
         }
     }
-}
+
+
+
+
+
+
+
 
 //     @SuppressLint("StaticFieldLeak")
 //     public class myfavasyntask extends AsyncTask<Void, Void, Boolean> {

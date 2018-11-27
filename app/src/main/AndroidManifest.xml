@@ -27,6 +27,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".favorite" />
         <activity android:name=".ModelAdapter" />
+        <activity android:name=".OneFragment" />
+        <activity android:name=".twoFragment" />
+        <activity android:name=".RecyleAdapterRetro" />
+        <activity android:name=".HomeScreen"></activity>
     </application>
 
 </manifest>

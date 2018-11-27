@@ -21,7 +21,7 @@ public class control extends AppCompatActivity {
             startActivity(intent);
             finish();
         }else {
-            Intent intent = new Intent(control.this, Home.class);
+            Intent intent = new Intent(control.this, HomeScreen.class);
             startActivity(intent);
 
 

@@ -1,10 +1,7 @@
 package com.example.rplrus06.midsemester12rpl;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +12,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.MyViewHolder> {
-    private List<ItemObject> moviesList;
+public class RecyleviewAdapter2 extends RecyclerView.Adapter<RecyleviewAdapter2.MyViewHolder> {
+    private List<Result> moviesList;
     Context context;
-    //String url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
+    String url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, description;
@@ -53,7 +49,7 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
     }
 
 
-    public RecyleviewAdapter(List<ItemObject> moviesList, Context context) {
+    public RecyleviewAdapter2(List<Result> moviesList, Context context) {
         this.context = context;
         this.moviesList = moviesList;
     }
@@ -68,19 +64,19 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        final ItemObject movie = moviesList.get(position);
-        holder.title.setText(movie.getNama());
+        final Result movie = moviesList.get(position);
+        holder.title.setText(movie.getTitle());
 
 
-        Glide.with(context).load(movie.getGambar()).into(holder.image);
+        Glide.with(context).load(url + movie.getPosterPath()).into(holder.image);
         holder.btnlihat.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                final String Nama = movie.getNama();
-                final String Gambar = movie.getGambar();
-                final String Deskripsi = movie.getDeskripsi();
-                final String id = movie.getId();
+                final String Nama = movie.getTitle();
+                final String Gambar = url + movie.getPosterPath();
+                final String Deskripsi = movie.getOverview();
+                final int id = movie.getId();
                 Intent intent = new Intent(context.getApplicationContext(), detailnama.class);
                 intent.putExtra("id",id);
                 intent.putExtra("Nama", Nama);
@@ -105,7 +101,6 @@ public class RecyleviewAdapter extends RecyclerView.Adapter<RecyleviewAdapter.My
 
             }
         });
-
 
     }
 
